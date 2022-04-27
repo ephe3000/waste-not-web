@@ -1,11 +1,23 @@
+import { Link } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-      <p>Waste-Not web! How are you feeling about starting this project? 🤪</p>
+    <div>
+      <h1>Landing page for waste.not.com</h1>
+      <div>maybe write a mission and values statement</div>
+      <br></br>
+      <div> \../ maybe have a image \../ </div>
+      <br></br>
+      <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Link to="/home">Home</Link> | 
+        <Link to="/locations"> Locations</Link> | 
+        <Link to="/food"> Food</Link>
+      </nav>
     </div>
   );
 }
-
-export default App;
