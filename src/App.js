@@ -1,23 +1,19 @@
-import { Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Location from "./pages/Location";
+import Reservation from "./pages/Reservation";
 
 export default function App() {
   return (
-    <div>
-      <h1>Landing page for waste.not.com</h1>
-      <div>maybe write a mission and values statement</div>
-      <br></br>
-      <div> \../ maybe have a image \../ </div>
-      <br></br>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/home">Home</Link> | 
-        <Link to="/locations"> Locations</Link> | 
-        <Link to="/food"> Food</Link>
-      </nav>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="search" element={<Search />} />
+        <Route path="location/:id" element={<Location />} />
+        <Route path="reservation" element={<Reservation />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
