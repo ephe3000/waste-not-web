@@ -20,3 +20,6 @@ const Search = () => {
 export default Search;
 
 // doc. for params - https://reactrouter.com/docs/en/v6/faq
+
+// free geolocation api:
+// https://ipgeolocation.io/

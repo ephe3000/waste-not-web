@@ -10,7 +10,7 @@ const Location = () => {
         The specific location that you have chosen. And the food that's
         available there
       </p>
-      <Link to="/">go home</Link>
+      <Link to="/">Home</Link>
     </>
   );
 };
