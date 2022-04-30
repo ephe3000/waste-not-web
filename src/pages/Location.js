@@ -5,12 +5,12 @@ const Location = () => {
 
   return (
     <>
-      <h1>location {params.id}</h1>
+      <h1 className="text-3xl font-bold underline">location</h1>
       <p>
         The specific location that you have chosen. And the food that's
         available there
       </p>
-      <Link to="/">go home</Link>
+      <Link to="/">Home</Link>
     </>
   );
 };
