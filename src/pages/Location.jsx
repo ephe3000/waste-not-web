@@ -5,7 +5,7 @@ const Location = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">location</h1>
+      <h1 className="text-3xl font-bold underline">location {params.id}</h1>
       <p>
         The specific location that you have chosen. And the food that's
         available there

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "ellie",
+        "latitude": 52.9545,
+        "longitude": -1.1549,
+        "city": "nottingham",
+        "id": 1
+    },
+    {
+        "name": "georgie",
+        "latitude": 51.4893335,
+        "longitude": -0.14405508452768728,
+        "city": "london",
+        "id": 2
+    },
+    {
+        "name": "laura",
+        "latitude": 53.4794892,
+        "longitude": -2.2451148,
+        "city": "manchester",
+        "id": 3
+    },
+    {
+        "name": "leo",
+        "latitude": 51.47091115,
+        "longitude": -2.5790334025708415,
+        "city": "bristol",
+        "id": 4
+    }
+]
