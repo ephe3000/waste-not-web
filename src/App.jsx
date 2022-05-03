@@ -17,3 +17,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+// doc. for params - https://reactrouter.com/docs/en/v6/faq
