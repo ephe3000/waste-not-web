@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 
 
 
-
 // --------- FUNCTIONS ------------
 const Search = () => {
   const [position, setPosition] = useState(null);
