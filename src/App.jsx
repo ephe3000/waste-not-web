@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
-import Location from "./pages/Location";
+import FoodBank from "./pages/FoodBank";
 import Reservation from "./pages/Reservation";
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="search" element={<Search />} />
-        <Route path="location/:id" element={<Location />} />
+        <Route path="food-bank/:id" element={<FoodBank />} />
         <Route path="reservation" element={<Reservation />} />
       </Routes>
     </BrowserRouter>

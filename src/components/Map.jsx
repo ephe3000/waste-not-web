@@ -33,7 +33,7 @@ const Map = (props) => {
           <Popup>
             {location.name}
             <br />
-            <Link to={`/location/${location.id}`}>Visit {location.name}</Link>
+            <Link to={`/food-bank/${location.id}`}>Visit {location.name}</Link>
           </Popup>
         </Marker>
       ))}

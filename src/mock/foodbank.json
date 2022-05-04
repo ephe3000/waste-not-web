@@ -1,6 +1,33 @@
 {
-    "name": "london-fbank",
+    "bankName": "london-fbank",
     "latitude": 51.4893335,
     "longitude": -0.14405508452768728,
-    "city": "london"
+    "city": "london",
+    "items": [
+        {
+            "id": 1,
+            "description": "veg",
+            "name": "tomatos"
+        },
+        {
+            "id": 2,
+            "description": "veg",
+            "name": "beans"
+        },
+        {
+            "id": 3,
+            "description": "veg",
+            "name": "potatos"
+        },
+        {
+            "id": 4,
+            "description": "veg",
+            "name": "corn"
+        },
+        {
+            "id": 5,
+            "description": "veg",
+            "name": "chard"
+        }
+    ]
 }
