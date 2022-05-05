@@ -17,7 +17,7 @@
         {
             "id": 3,
             "description": "veg",
-            "name": "potatos"
+            "name": "potatoes"
         },
         {
             "id": 4,
@@ -26,6 +26,11 @@
         },
         {
             "id": 5,
+            "description": "veg",
+            "name": "apples"
+        },
+        {
+            "id": 6,
             "description": "veg",
             "name": "chard"
         }
