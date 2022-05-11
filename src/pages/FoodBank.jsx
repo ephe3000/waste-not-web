@@ -1,22 +1,28 @@
 // ----------- imports ----------------
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Modal from "../components/UI/Modal";
+import Header from "../components/Header";
 import foodBankMock from "../mock/foodbank.json";
+import CollectionForm from "../components/CollectionForm";
+import DropOffForm from "../components/DropOffForm";
 
-// --------- functions --------------
+// --------- FUNCTIONS --------------
 const FoodBank = () => {
   // name and address display, plus items in each bank
   const [foodBank, setFoodBank] = useState(null);
 
-  const [modalActive, setModalActive] = useState(false);
+  //nullable string with link to drop and collection modals
+  const [modalActive, setModalActive] = useState(null);
+
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // link param to city name
   const params = useParams();
 
   // drop off modal
 
-  // drop off inputtd items -> pending backend api
+  // **-------  drop off inputtd items -> pending backend api -----------**
   const [dropOffItems, setDropOffItems] = useState(null);
 
   //  this should get foodbank from api, but using mock data atm
@@ -25,17 +31,24 @@ const FoodBank = () => {
     setFoodBank(foodBankMock);
   }, []);
 
-  // ----------- handlers --------------------
-  // submitting form - picking up/dropping off
+  // ----------- HANDLERS --------------------
 
+  // setting the item from the click button
+  const handleItemClick = (item) => {
+    setModalActive("collect");
+    setSelectedItem(item);
+  };
+
+  // if foodbank not yet e.g., no id/invalid id
   if (!foodBank) {
     return null;
   }
 
-  // ------------- render -----------------
+  // ------------- RENDER -----------------
 
   return (
     <>
+      <Header />
       <h1 className="text-3xl font-bold underline">
         your foodbank id: {params.id}
       </h1>
@@ -51,7 +64,7 @@ const FoodBank = () => {
         </span>
 
         <button
-          onClick={() => setModalActive(true)}
+          onClick={() => setModalActive("drop")}
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
         >
           click
@@ -69,7 +82,7 @@ const FoodBank = () => {
             <p>{item.name}</p>
 
             <button
-              onClick={() => setModalActive(true)}
+              onClick={() => handleItemClick(item)}
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
             >
               click
@@ -78,8 +91,18 @@ const FoodBank = () => {
         ))}
       </div>
 
-      <Modal active={modalActive} handleClose={() => setModalActive(false)}>
-        Hello!
+      <Modal
+        active={modalActive === "collect"}
+        handleClose={() => setModalActive(false)}
+      >
+        <CollectionForm item={selectedItem} />
+      </Modal>
+
+      <Modal
+        active={modalActive === "drop"}
+        handleClose={() => setModalActive(false)}
+      >
+        <DropOffForm />
       </Modal>
     </>
   );

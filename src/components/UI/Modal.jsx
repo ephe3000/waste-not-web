@@ -11,14 +11,12 @@ const Modal = (props) => {
       <div className="modal">
         <div onClick={props.handleClose} className="overlay"></div>
         <div className="modal-content">
-          <h2>Hello Modal</h2>
-          <p>plop</p>
+          {props.children}
           <button className="close-modal" onClick={props.handleClose}>
             CLOSE
           </button>
         </div>
       </div>
-      <div>{props.children}</div>
     </>
   );
 };
