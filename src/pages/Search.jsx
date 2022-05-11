@@ -1,9 +1,8 @@
 import locations from "../mock/locations.json";
+import Header from "../components/Header";
 import Map from "../components/Map";
 import { MapContainer } from "react-leaflet";
 import React, { useState, useEffect } from "react";
-
-
 
 // --------- FUNCTIONS ------------
 const Search = () => {
@@ -20,7 +19,6 @@ const Search = () => {
       () => setCitiesVisible(true) // error - location denied
     );
   }, []);
-
 
   // ------------- HANDLERS --------------
   const handleCityChange = (e) => {
@@ -39,10 +37,8 @@ const Search = () => {
     console.log(e.target.value);
   };
 
-
   // --------  CITIES/OBJECT --------------
   const cities = [
-
     {
       name: "London",
       latitude: 51.4893335,
@@ -77,10 +73,10 @@ const Search = () => {
     },
   ];
 
-
   // ------------- RENDER -----------------
   return (
     <>
+      <Header />
       <form className="pt-20">
         <div className="flex">
           {/* && means, if citiesVisible selected do the following... */}
@@ -98,7 +94,10 @@ const Search = () => {
 
           <div className="p-10 flex justify-end">
             <label className="text-2xl font-bold"> Distance:</label>
-            <select onChange={(event) => handleDistanceChange(event)} className="ml-5">
+            <select
+              onChange={(event) => handleDistanceChange(event)}
+              className="ml-5"
+            >
               <option value="5">5 miles</option>
               <option value="10">10 miles</option>
               <option value="20">20 miles</option>
@@ -129,21 +128,17 @@ const Search = () => {
 
 export default Search;
 
-
 // free geolocation api:
 // https://ipgeolocation.io/
 
-// useState for 'position' and 'cities' because the overall function is re-rendered. 
+// useState for 'position' and 'cities' because the overall function is re-rendered.
 // useState uses array destructuring - e.g., position, setPosition - setPosition is the callable function, position is the 'current state' (e.g., null)
 // In this e.g., it goes on to point to the handlyCityChange function, and set a new position based on selected city.
 
-  // useEffect to get current location and set current location (postion) in state
-  // passing location to let it know to show cities visible 
-  // geolocation docs:
-  //  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
+// useEffect to get current location and set current location (postion) in state
+// passing location to let it know to show cities visible
+// geolocation docs:
+//  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
 
 // rendered using a fragment - <> - https://reactjs.org/docs/fragments.html
 // fragment allows one parent element to render multiple elements.
-
-
-
