@@ -1,5 +1,5 @@
 {
-    "bankName": "london-fbank",
+    "name": "mock-foodbank",
     "latitude": 51.4893335,
     "longitude": -0.14405508452768728,
     "city": "london",
@@ -7,32 +7,32 @@
         {
             "id": 1,
             "description": "veg",
-            "name": "tomatos"
+            "name": "Tomatos"
         },
         {
             "id": 2,
             "description": "veg",
-            "name": "beans"
+            "name": "Beans"
         },
         {
             "id": 3,
             "description": "veg",
-            "name": "potatoes"
+            "name": "Potatoes"
         },
         {
             "id": 4,
             "description": "veg",
-            "name": "corn"
+            "name": "Corn"
         },
         {
             "id": 5,
             "description": "veg",
-            "name": "apples"
+            "name": "Apples"
         },
         {
             "id": 6,
             "description": "veg",
-            "name": "chard"
+            "name": "Chard"
         }
     ]
 }

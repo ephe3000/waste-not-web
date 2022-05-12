@@ -1,14 +1,27 @@
 import locations from "../mock/locations.json";
-import Header from "../components/Header";
+import Banner from "../components/UI/Banner";
+import Footer from "../components/UI/Footer";
+import Header from "../components/UI/Header";
 import Map from "../components/Map";
 import { MapContainer } from "react-leaflet";
 import React, { useState, useEffect } from "react";
 
 // --------- FUNCTIONS ------------
+// useState for 'position' and 'cities' because the overall function is re-rendered.
+// useState uses array destructuring - e.g., position, setPosition - setPosition is the callable function, position is the 'current state' (e.g., null)
+// In this e.g., it goes on to point to the handlyCityChange function, and set a new position based on selected city.
+
 const Search = () => {
   const [position, setPosition] = useState(null);
   const [citiesVisible, setCitiesVisible] = useState(false);
 
+  // geolocation api docs:
+  // https://ipgeolocation.io/
+
+  // useEffect to get current location and set current location (postion) in state
+  // passing location to let it know to show cities visible
+  // geolocation docs:
+  //  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
   useEffect(() => {
     if (!navigator.geolocation) {
       setCitiesVisible(true);
@@ -75,13 +88,16 @@ const Search = () => {
 
   // ------------- RENDER -----------------
   return (
+    // rendered using a fragment - <> - https://reactjs.org/docs/fragments.html
+    // fragment allows one parent element to render multiple elements.
     <>
+      <Banner />
       <Header />
-      <form className="pt-20">
+      <form className="pt-10">
         <div className="flex">
           {/* && means, if citiesVisible selected do the following... */}
           {citiesVisible && (
-            <div className="p-10 flex justify-end">
+            <div className="p-5 flex justify-end">
               <label className="text-2xl font-bold">Cities:</label>
               <select onChange={handleCityChange} className="ml-5">
                 <option>select city</option>
@@ -92,7 +108,7 @@ const Search = () => {
             </div>
           )}
 
-          <div className="p-10 flex justify-end">
+          <div className="p-5 flex justify-end">
             <label className="text-2xl font-bold"> Distance:</label>
             <select
               onChange={(event) => handleDistanceChange(event)}
@@ -122,23 +138,9 @@ const Search = () => {
           </MapContainer>
         </div>
       )}
+      <Footer />
     </>
   );
 };
 
 export default Search;
-
-// free geolocation api:
-// https://ipgeolocation.io/
-
-// useState for 'position' and 'cities' because the overall function is re-rendered.
-// useState uses array destructuring - e.g., position, setPosition - setPosition is the callable function, position is the 'current state' (e.g., null)
-// In this e.g., it goes on to point to the handlyCityChange function, and set a new position based on selected city.
-
-// useEffect to get current location and set current location (postion) in state
-// passing location to let it know to show cities visible
-// geolocation docs:
-//  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
-
-// rendered using a fragment - <> - https://reactjs.org/docs/fragments.html
-// fragment allows one parent element to render multiple elements.
