@@ -93,38 +93,50 @@ const Search = () => {
     <>
       <Banner />
       <Header />
-      <form className="pt-10">
-        <div className="flex">
-          {/* && means, if citiesVisible selected do the following... */}
-          {citiesVisible && (
+      <section className="bg-white max-w-lg mx-auto  md:p-5 my-5 mb-20 rounded-lg shadow-2xl">
+        <h2 className="text-center pt-1 text-gray-700">
+          Please enable geolocation.
+          <br /> Alternatively, a drop-down list will be provided.
+        </h2>
+
+        <form className="pt-10">
+          <div className="flex">
+            {/* && means, if citiesVisible selected do the following... */}
+            {citiesVisible && (
+              <div className="p-5 flex justify-end">
+                <label className="text-1xl font-bold text-gray-700 border-b-[1px] border-lime-400">
+                  Cities:
+                </label>
+                <select onChange={handleCityChange} className="ml-5">
+                  <option>select city</option>
+                  {cities.map((city) => (
+                    <option value={city.name}>{city.name}</option>
+                  ))}
+                </select>
+              </div>
+            )}
+
             <div className="p-5 flex justify-end">
-              <label className="text-2xl font-bold">Cities:</label>
-              <select onChange={handleCityChange} className="ml-5">
-                <option>select city</option>
-                {cities.map((city) => (
-                  <option value={city.name}>{city.name}</option>
-                ))}
+              <label className="text-1xl font-bold text-gray-700 border-b-[1px] border-lime-400">
+                {" "}
+                Distance:
+              </label>
+              <select
+                onChange={(event) => handleDistanceChange(event)}
+                className="ml-5"
+              >
+                <option value="5">5 miles</option>
+                <option value="10">10 miles</option>
+                <option value="20">20 miles</option>
+                <option value="30">30 miles</option>
+                <option value="50">50 miles</option>
+                <option value="1000">national</option>
+                {/* distance will be calculated using sql distance sphere */}
               </select>
             </div>
-          )}
-
-          <div className="p-5 flex justify-end">
-            <label className="text-2xl font-bold"> Distance:</label>
-            <select
-              onChange={(event) => handleDistanceChange(event)}
-              className="ml-5"
-            >
-              <option value="5">5 miles</option>
-              <option value="10">10 miles</option>
-              <option value="20">20 miles</option>
-              <option value="30">30 miles</option>
-              <option value="50">50 miles</option>
-              <option value="1000">national</option>
-              {/* distance will be calculated using sql distance sphere */}
-            </select>
           </div>
-        </div>
-      </form>
+        </form>
+      </section>
 
       {position && (
         <div>

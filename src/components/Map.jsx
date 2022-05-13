@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import leaflet from "leaflet";
-import userPositionIcon from '../images/user-position-icon.png'
-
+import userPositionIcon from "../images/user-position-icon.png";
 
 // ----------- FUNCTIONS --------------
 const Map = (props) => {
@@ -19,8 +18,7 @@ const Map = (props) => {
     iconSize: [20, 20],
   });
 
-  
-//  ---------- RENDER -------------------
+  //  ---------- RENDER -------------------
   return (
     <>
       <TileLayer
@@ -31,9 +29,19 @@ const Map = (props) => {
       {props.locations.map((location) => (
         <Marker position={[location.latitude, location.longitude]}>
           <Popup>
-            {location.name}
-            <br />
-            <Link to={`/food-bank/${location.id}`}>Visit {location.name}</Link>
+            <form className>
+              <h1 className="text-base font-bold">Visit {location.name}</h1>
+
+              <br />
+              <div className="pt-5 m-2">
+                <Link
+                  to={`/food-bank/${location.id}`}
+                  className="flex justify-center py-1 px-2 text-small font-bold rounded-md text-white bg-lime-400 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-400"
+                >
+                  Click
+                </Link>
+              </div>
+            </form>
           </Popup>
         </Marker>
       ))}
@@ -43,9 +51,8 @@ const Map = (props) => {
 
 export default Map;
 
+// https://stackoverflow.com/questions/65878831/how-to-set-leaflet-maps-zoom-to-show-all-markers-in-react-leaflet
+//  for each location in json location, place a marker with set bounds
 
-  // https://stackoverflow.com/questions/65878831/how-to-set-leaflet-maps-zoom-to-show-all-markers-in-react-leaflet
-  //  for each location in json location, place a marker with set bounds
-
-  // https://leafletjs.com/
-  // tilelayer attribution and url from 'leaflet' docs
+// https://leafletjs.com/
+// tilelayer attribution and url from 'leaflet' docs
