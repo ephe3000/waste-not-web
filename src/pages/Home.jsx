@@ -10,15 +10,15 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <main className="bg-white max-w-lg mx-auto  md:p-5 my-5 rounded-lg shadow-2xl">
+      <main className="flex flex-col bg-white max-w-lg mx-auto justify-center items-center  md:p-5 my-5 mt-20 rounded-lg shadow-2xl">
         <section>
-          <h1 className="text-2xl text-center pt-1 font-bold text-gray-700 m-5">
+          <h1 className="text-3xl text-center pt-1 font-bold text-gray-700 m-5 underline decoration-2 decoration-lime-400">
             Welcome to Waste-Not!
           </h1>
         </section>
 
-        <section class="m-50">
-          <div class="pt-3 rounded bg-grey-100">
+        <section className="m-50">
+          <div className="pt-3 rounded bg-grey-100">
             <p className="text-gray-700 pt-2 p-2 text-lg text-center">
               Waste-Not is a site for people with spare food. It is also a site
               for people in food poverty.
@@ -30,11 +30,9 @@ const Home = () => {
           </div>
         </section>
 
-        <br />
-
         <Link
           to="../search"
-          className="group block w-full text-center py-2 px-4 text-lg font-bold rounded-md text-white bg-green-500 hover:bg-green-700"
+          className="text-center justify-center py-2 px-4 text-lg font-bold rounded-md text-white bg-lime-400 hover:bg-lime-500"
         >
           Start
         </Link>
