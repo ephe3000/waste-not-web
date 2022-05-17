@@ -1,12 +1,14 @@
 // ----- imports ------
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import validate from "./validate";
 
 // ----- functions --------
 const DropOffForm = () => {
   const [foodItem, setFoodItem] = useState("");
-  const [emailItem, setEmailItem] = useState("");
-  const [telephoneItem, setTelephoneItem] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [errors, setErrors] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -16,10 +18,16 @@ const DropOffForm = () => {
     e.preventDefault();
     console.log("submitted");
     console.log(foodItem);
-    console.log(emailItem);
-    console.log(telephoneItem);
+    console.log(email);
+    console.log(telephone);
     console.log(params.id);
-    navigate("../confirmation");
+    const formErrors = validate(email, telephone);
+
+    if (formErrors.email || formErrors.telephone) {
+      return setErrors(formErrors);
+    } else {
+      navigate("../confirmation");
+    }
   };
 
   // -------- render ---------
@@ -50,11 +58,15 @@ const DropOffForm = () => {
               Email address
             </label>
             <input
-              onChange={(e) => setEmailItem(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-200 text-gray-900 rounded-t-md focus:outline-none focus:ring-lime-400 focus:border-lime-400 focus:z-10 sm:text-sm"
               placeholder="Email address"
             />
           </div>
+          {errors && (
+            <div className="text-base text-red-700">{errors.email}</div>
+          )}
+          <br />
 
           <br />
 
@@ -63,11 +75,14 @@ const DropOffForm = () => {
               Telephone
             </label>
             <input
-              onChange={(e) => setTelephoneItem(e.target.value)}
+              onChange={(e) => setTelephone(e.target.value)}
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-200 text-gray-900 rounded-t-md focus:outline-none focus:ring-lime-400 focus:border-lime-400 focus:z-10 sm:text-sm"
               placeholder="Telephone"
             />
           </div>
+          {errors && (
+            <div className="text-base text-red-700">{errors.telephone}</div>
+          )}
         </div>
         <div className="flex items-center justify-between"></div>
         <div>

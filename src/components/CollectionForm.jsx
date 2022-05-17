@@ -1,11 +1,14 @@
 // ----- imports ------
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import validate from "./validate";
 
 // ----- FUNCTIONS --------
+
 const CollectionForm = (props) => {
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [errors, setErrors] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -20,11 +23,26 @@ const CollectionForm = (props) => {
     console.log(telephone);
     console.log(props.item.id);
     console.log(params.id);
-    navigate("../confirmation");
+
+    const formErrors = validate(email, telephone);
+
+    console.log(formErrors);
+
+    // {email: null, tel: 'please enter a tel' }
+    // {email: 'emai valid', tel: 'please enter a tel' }
+    // {email: 'please enter email', tel: null }
+    // null
+
+    // errors.email
+
+    if (formErrors.email || formErrors.telephone) {
+      return setErrors(formErrors);
+    } else {
+      navigate("../confirmation");
+    }
   };
 
   // -------- RENDER ---------
-
   return (
     <>
       <form className="mt-8 space-y-6" onSubmit={handleSubmit} method="POST">
@@ -47,6 +65,9 @@ const CollectionForm = (props) => {
               placeholder="Email address"
             />
           </div>
+          {errors && (
+            <div className="text-base text-red-700">{errors.email}</div>
+          )}
           <br />
           <div>
             <label htmlFor="telephone" className="sr-only">
@@ -58,6 +79,9 @@ const CollectionForm = (props) => {
               placeholder="Telephone"
             />
           </div>
+          {errors && (
+            <div className="text-base text-red-700">{errors.telephone}</div>
+          )}
         </div>
         <div className="flex items-center justify-between"></div>
         <div>
