@@ -27,7 +27,10 @@ const Map = (props) => {
       />
       <Marker position={props.userPosition} icon={icon}></Marker>
       {props.locations.map((location) => (
-        <Marker position={[location.latitude, location.longitude]}>
+        <Marker
+          key={location.id}
+          position={[location.latitude, location.longitude]}
+        >
           <Popup>
             <form className>
               <h1 className="text-base font-bold">Visit {location.name}</h1>

@@ -1,4 +1,3 @@
-import locations from "../mock/locations.json";
 import Banner from "../components/UI/Banner";
 import Footer from "../components/UI/Footer";
 import Header from "../components/UI/Header";
@@ -12,6 +11,8 @@ import React, { useState, useEffect } from "react";
 // In this e.g., it goes on to point to the handlyCityChange function, and set a new position based on selected city.
 
 const Search = () => {
+  const [locations, setLocations] = useState(null);
+  const [distance, setDistance] = useState("20");
   const [position, setPosition] = useState(null);
   const [citiesVisible, setCitiesVisible] = useState(false);
 
@@ -33,6 +34,26 @@ const Search = () => {
     );
   }, []);
 
+  // fetch locations from api
+  useEffect(() => {
+    console.log(position, distance);
+    if (!position || !distance) {
+      return;
+    }
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("distance", distance);
+    urlencoded.append("latitude", position[0]);
+    urlencoded.append("longitude", position[1]);
+    console.log(position);
+    fetch(`${process.env.REACT_APP_API}locations`, {
+      method: "POST",
+      body: urlencoded,
+    })
+      .then((response) => response.json())
+      .then((result) => setLocations(result))
+      .catch((error) => console.log("error", error));
+  }, [position, distance]);
+
   // ------------- HANDLERS --------------
   const handleCityChange = (e) => {
     const city = cities.find((city) => city.name === e.target.value);
@@ -47,7 +68,7 @@ const Search = () => {
 
   //THIS IS NOT USED YET - will be based on backend/sql sphere location
   const handleDistanceChange = (e) => {
-    console.log(e.target.value);
+    setDistance(e.target.value);
   };
 
   // --------  CITIES/OBJECT --------------
@@ -124,6 +145,7 @@ const Search = () => {
               <select
                 onChange={(event) => handleDistanceChange(event)}
                 className="ml-5"
+                defaultValue={distance}
               >
                 <option value="5">5 miles</option>
                 <option value="10">10 miles</option>
@@ -131,14 +153,19 @@ const Search = () => {
                 <option value="30">30 miles</option>
                 <option value="50">50 miles</option>
                 <option value="1000">national</option>
-                {/* distance will be calculated using sql distance sphere */}
               </select>
             </div>
           </div>
+          {/* fix plural singular return */}
+          {locations && (
+            <p className="text-gray-700 pt-2 p-2 text-center">
+              Found {locations.length} location(s) within your search critera
+            </p>
+          )}
         </form>
       </section>
 
-      {position && (
+      {locations && (
         <div>
           <MapContainer
             center={position}
