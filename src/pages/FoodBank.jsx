@@ -51,7 +51,6 @@ const FoodBank = () => {
   return (
     <>
       <Banner />
-      <Header />
       <h1 className="text-3xl text-center pt-1 font-bold text-gray-700 m-5 underline decoration-2 decoration-lime-400">
         {foodBank.name}
         {console.log("jhjkh", foodBank)}

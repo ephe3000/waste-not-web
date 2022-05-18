@@ -92,8 +92,7 @@ const Search = () => {
     // fragment allows one parent element to render multiple elements.
     <>
       <Banner />
-      <Header />
-      <section className="bg-white max-w-lg mx-auto  md:p-5 my-5 mb-20 rounded-lg shadow-2xl">
+      <section className="bg-white max-w-lg mx-auto  p-5 my-5 mb-20 rounded-lg shadow-2xl">
         <h2 className="text-center pt-1 text-gray-700">
           Please enable geolocation.
           <br /> Alternatively, a drop-down list will be provided.
@@ -136,9 +135,7 @@ const Search = () => {
             </div>
           </div>
         </form>
-      </section>
-
-      {position && (
+        {position && (
         <div>
           <MapContainer
             center={position}
@@ -150,6 +147,9 @@ const Search = () => {
           </MapContainer>
         </div>
       )}
+      </section>
+
+
       <Footer />
     </>
   );
