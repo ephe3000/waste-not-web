@@ -156,7 +156,6 @@ const Search = () => {
               </select>
             </div>
           </div>
-          {/* fix plural singular return */}
           {locations && (
             <p className="text-gray-700 pt-2 p-2 text-center">
               Found {locations.length} location(s) within your search critera
