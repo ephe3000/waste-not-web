@@ -45,8 +45,6 @@ const Search = () => {
     urlencoded.append("latitude", position[0]);
     urlencoded.append("longitude", position[1]);
     console.log(position);
-    // send a request to server as a method:POST (which can be checked in postman//https://www.postman.com/)
-    // body: urlencoded - this is the variable, so the specific lat,lon, distance
     fetch(`${process.env.REACT_APP_API}locations`, {
       method: "POST",
       body: urlencoded,
@@ -158,7 +156,6 @@ const Search = () => {
               </select>
             </div>
           </div>
-          {/* fix plural singular return.. */}
           {locations && (
             <p className="text-gray-700 pt-2 p-2 text-center">
               Found {locations.length} location(s) within your search critera
