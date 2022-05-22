@@ -125,13 +125,22 @@ const Search = () => {
             {/* && means, if citiesVisible selected do the following... */}
             {citiesVisible && (
               <div className="p-5 flex justify-end">
-                <label className="text-1xl font-bold text-gray-700 border-b-[1px] border-lime-400">
+                <label
+                  htmlFor="cities"
+                  className="text-1xl font-bold text-gray-700 border-b-[1px] border-lime-400"
+                >
                   Cities:
                 </label>
-                <select onChange={handleCityChange} className="ml-5">
+                <select
+                  id="cities"
+                  onChange={handleCityChange}
+                  className="ml-5"
+                >
                   <option>select city</option>
                   {cities.map((city) => (
-                    <option value={city.name}>{city.name}</option>
+                    <option value={city.name} key={city.name}>
+                      {city.name}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -158,7 +167,7 @@ const Search = () => {
           </div>
           {locations && (
             <p className="text-gray-700 pt-2 p-2 text-center">
-              Found {locations.length} location(s) within your search critera
+              Found {locations.length} location(s) within your search criteria
             </p>
           )}
         </form>

@@ -30,21 +30,19 @@ const Map = (props) => {
         <Marker
           key={location.id}
           position={[location.latitude, location.longitude]}
+          data-testid={location.id}
         >
           <Popup>
-            <form className>
-              <h1 className="text-base font-bold">Visit {location.name}</h1>
-
-              <br />
-              <div className="pt-5 m-2">
-                <Link
-                  to={`/food-bank/${location.id}`}
-                  className="flex justify-center py-1 px-2 text-small font-bold rounded-md text-white bg-lime-400 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-400"
-                >
-                  Click
-                </Link>
-              </div>
-            </form>
+            <h1 className="text-base font-bold">Visit {location.name}</h1>
+            <br />
+            <div className="pt-5 m-2">
+              <Link
+                to={`/food-bank/${location.id}`}
+                className="flex justify-center py-1 px-2 text-small font-bold rounded-md text-white bg-lime-400 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-400"
+              >
+                Click
+              </Link>
+            </div>
           </Popup>
         </Marker>
       ))}
