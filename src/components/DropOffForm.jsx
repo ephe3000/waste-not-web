@@ -17,16 +17,21 @@ const DropOffForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
-    console.log(foodItem);
-    console.log(email);
-    console.log(telephone);
-    console.log(params.id);
     const formErrors = validate(email, telephone);
 
     if (formErrors.email || formErrors.telephone) {
       return setErrors(formErrors);
     } else {
-      navigate("../confirmation");
+      const urlencoded = new URLSearchParams();
+      urlencoded.append("locations_id", params.id);
+      urlencoded.append("description", foodItem);
+
+      fetch(`${process.env.REACT_APP_API}foodpack`, {
+        method: "POST",
+        body: urlencoded,
+      })
+        .then((response) => navigate("../confirmation"))
+        .catch((error) => console.log("error", error));
     }
   };
 
