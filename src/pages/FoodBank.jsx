@@ -83,7 +83,10 @@ const FoodBank = () => {
             <h2 className="font-bold">Are you in need of food?</h2>
           </span>
           {foodPacks.map((foodPack) => (
-            <div className="flex justify-between m-5 items-center">
+            <div
+              key={foodPack.id}
+              className="flex justify-between m-5 items-center"
+            >
               <p className="text-gray-700 pt-2 p-2 text-center font-semibold">
                 {foodPack.description}
               </p>
