@@ -23,48 +23,109 @@ code {
   background-color: rgba(255, 255, 255, 0.1)
 }
 
+.btn {
+  padding: .5rem 1rem;
+  background: rgb(0, 255, 0);
+  color: white;
+  font: bold rounded-md;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.btn-big {
+  padding: .7rem 1.3rem;
+  line-height: 1.3rem;
+}
+
 /* FOOTER */
 .footer {
-  background: #d3d3d3;
-  color: #303036;
-  height: 400px;
-  position: relative;
+  background: #303030;
+  color: #d3d3d3;
+  height: 230px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
 }
 
 .footer .footer-content {
-  border: 1px solid red;
-  height: 350px;
+  height: 180px;
   display: flex;
 }
 
 .footer .footer-content .footer-section {
   flex: 1;
-  padding: 25px;
-  border: 1px solid white;
-
+  padding: 10px;
 }
 
+.footer .footer-content h1,
+.footer .footer-content h2 {
+  color: white;
+}
+
+.footer .footer-content .about h1 span {
+  color: white;
+}
+
+.footer .footer-content .about .contact span {
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  line-height: 1rem;
+}
+
+.footer .footer-content .about .socials a{
+  border: 1xp solid white;
+  width: 45px;
+  height: 41px;
+  line-height: 1rem;
+  padding-top: 5px;
+  margin-right: 5px;
+  text-align: left;
+  display: inline-block;
+  font-size: 1.3em;
+  border-radius: 5px;
+}
+
+.footer .footer-content .links ul a {
+  display: block;
+  margin-bottom: 10px;
+  line-height: 1rem;
+  font-size: 1.2
+}
+
+.footer .footer-content .links ul a:hover{
+  color: white;
+  margin-left: 15px;
+  line-height: 1rem;
+  transition: all .3s;
+}
+
+.footer .footer-content .contact-form .contact-input {
+  background: #272727;
+  color: #bebdbd;
+  margin-bottom: 5px;
+  line-height: 1rem;
+  padding: .6rem .4rem;
+  border: none;
+}
+
+.footer .footer-content .contact-form .contact-input {
+  background: #1a1a1a;
+}
+
+.footer .footer-content .contact-form contact-btn {
+  float: left;
+}
+
+
 .footer .footer-bottom {
-  background: #686868;
-  color: #343a40;
-  height: 50px;
+  background: #303036;
+  color: #d3d3d3;
+  height: 30px;
   width: 100%;
   text-align: centre;
   position: absolute;
   bottom: 0px;
   left: 0px;
-  padding-top: 20px;
+  padding-top: 5px;
 } 
-
-
-/* .footer .footer-bottom {
-  background: #686868;
-  color: #343a40;
-  height: 50px;
-  width: 100%;
-  text-align: centre;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  line-height: height of ooter-bottom;
-} */

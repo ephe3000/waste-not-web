@@ -1,17 +1,15 @@
-import orangeIcon from "../../images/orangeIcon.png";
+import logo from "../../images/logo.png";
+import Header from "./Header";
 
 const Banner = () => {
   return (
-    <div className="flex justify-center border-b-[1px] border-lime-300/100 bg-gradient-to-r from-blue-100 to-blue-200 p-10 mb-10">
-      <img
-        className="object-center object-scale-down h-20 w-40 ..."
-        src={orangeIcon}
-      />
-      <div className="py-1 px-1 sm:px-1 lg:px-1">
-        <div className="flex justify-between flex-wrap">
-          <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto"></div>
-        </div>
-      </div>
+    <div
+      className="flex flex-col items-center  border-b-[1px] border-lime-300/100 bg-gradient-to-r p-5 mb-10"
+      style={{ backgroundColor: "rgb(252, 249, 250)", opacity: 0.8 }}
+    >
+      <img style={{ height: "80px" }} src={logo} />
+
+      <Header />
     </div>
   );
 };

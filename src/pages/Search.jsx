@@ -113,7 +113,6 @@ const Search = () => {
     // fragment allows one parent element to render multiple elements.
     <>
       <Banner />
-      <Header />
       <section className="bg-white max-w-lg mx-auto  md:p-5 my-5 mb-20 rounded-lg shadow-2xl">
         <h2 className="text-center pt-1 text-gray-700">
           Please enable geolocation.
