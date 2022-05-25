@@ -170,20 +170,19 @@ const Search = () => {
             </p>
           )}
         </form>
+        {locations && (
+          <div>
+            <MapContainer
+              center={position}
+              zoom={13}
+              scrollWheelZoom={false}
+              style={{ height: "400px" }}
+            >
+              <Map locations={locations} userPosition={position} />
+            </MapContainer>
+          </div>
+        )}
       </section>
-
-      {locations && (
-        <div>
-          <MapContainer
-            center={position}
-            zoom={13}
-            scrollWheelZoom={false}
-            style={{ height: "400px" }}
-          >
-            <Map locations={locations} userPosition={position} />
-          </MapContainer>
-        </div>
-      )}
       <Footer />
     </>
   );
